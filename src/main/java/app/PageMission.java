@@ -59,16 +59,6 @@ public class PageMission implements Handler {
         <div class='topnav'>
             <a href='/'>Home</a>
             <div class='dropDown'>
-                <button class='dropbtn'>About Us
-                    <i class='fa fa-caret-down'></i>
-                </button>
-                <div class='dropdown-content'>
-                    <a href='mission.html'>Our Mission</a>
-                    <a href='mission.html#persona-section'>Personas</a>
-                    <a href='mission.html#aboutUs-section'>Contact Us</a>
-                </div>
-            </div>
-            <div class='dropDown'>
                 <button class='dropbtn'>Climate Data and Analysis
                     <i class='fa fa-caret-down'></i>
                 </button>
@@ -79,6 +69,16 @@ public class PageMission implements Handler {
                     <a href='page3A.html'>Change In Temperature Over Extended Periods</a>
                     <a href='page3B.html'>Time Periods With Similar Temperature/Population</a>
                     <a href='page3C.html'>Comparison Of Global Temperature Data Over Extended Periods</a>
+                </div>
+            </div>
+            <div class='dropDown'>
+                <button class='dropbtn'>About Us
+                    <i class='fa fa-caret-down'></i>
+                </button>
+                <div class='dropdown-content'>
+                    <a href='mission.html'>Our Mission</a>
+                    <a href='mission.html#persona-section'>Personas</a>
+                    <a href='mission.html#aboutUs-section'>Contact Us</a>
                 </div>
             </div>
         </div>
