@@ -185,7 +185,6 @@ justify-content: center;
    padding-top: 100px;
    margin-top: 100px;
    background-color: white;
-   padding: 50px;
    z-index: 9994;
    /* Controls how far down the footer is
    If its set to 100vh the footer is one scroll below page*/
@@ -302,7 +301,7 @@ justify-content: center;
 
 
 .content h2 {
-   color: #6cb358;
+   color: #000000;
    
 }
 .content select {
