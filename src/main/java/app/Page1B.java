@@ -145,7 +145,7 @@ public class Page1B implements Handler {
         </div>
         <div class="tabs">
           <div class="pane-content1">
-              <h3><a href="/climate-change/reducing-emissions"><span class="figure image file file-image file-image-png view-mode-full" style="width:336px;"><img alt="Photo of two windmills in a grassy field" height="137" width="336" class="media-element file-full" typeof="foaf:Image" src="iceberg-6779681_1920.jpg"></span><br></a>Climate changing by time and region?</h3>
+              <h3><a href="/climate-change/reducing-emissions"><span class="figure image file file-image file-image-png view-mode-full" style="width:336px;"><img alt="Photo of two windmills in a grassy field" height="137" width="336" class="media-element file-full" typeof="foaf:Image" src="iceberg-6779681_1280.jpg"></span><br></a>Climate changing by time and region?</h3>
 
               <ul><li><a href='page3A.html'>Change In Temperature Over Extended Periods</a></li>
                 <li><a href='page3B.html'>Time Periods With Similar Temperature/Population</a></li>
