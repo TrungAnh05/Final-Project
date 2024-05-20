@@ -45,6 +45,7 @@ public class PageST2A implements Handler {
                 + "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>";
         html = html + "<link rel='stylesheet' type='text/css' href='common.css' />";
         html = html + "<link rel='stylesheet' type='text/css' href='burgerNav.css' />";
+        html = html + "<link rel='stylesheet' type='text/css' href='pageST2A.css' />";
         html = html + "</head>";
 
         // Add the body
@@ -164,7 +165,7 @@ public class PageST2A implements Handler {
         html = html + "<div>";
         html = html + "     <label for='CountryWorld_drop'>Select Global or Country data:</label>";
         html = html + "     <select id='CountryWorld_drop' name='CountryWorld_drop' size='1'>";
-        html = html + "<option value='' disabled selected hidden>--select country/global--</option>";
+        html = html + "<option value='' disabled selected hidden>--Select Country/Global--</option>";
         html = html + "     <option>Global</option>";
         html = html + "     <option>Country</option>";
         html = html + "     </select>";
@@ -175,16 +176,28 @@ public class PageST2A implements Handler {
         ArrayList<Climate> years = jdbc.getPopulationYears();
 
         // Dropdown to select start year which updates end year based on result
-        html = html + "<div>";
-        html = html + "     <label for='StartYear_drop'>Select the start year:</label>";
-        html = html
-                + "     <select id='StartYear_drop' name='StartYear_drop' onchange='updateEndYearOptions()' size='1'>";
-        html = html + "<option value='' disabled selected hidden>--select year--</option>";
+        html = html + "<div style='display: flex; align-items: center; gap: 10px;'>";
+        html = html + "     <div>";
+        html = html + "         <label for='StartYear_drop'>Select Start Year:</label>";
+        html = html + "         <select id='StartYear_drop' name='StartYear_drop' onchange='updateEndYearOptions()' size='1'>";
+        html = html + "             <option value='' disabled selected hidden>--Select Year--</option>";
         for (Climate year : years) {
-            html = html + "<option>" + year.getYear() + "</option>";
+            html = html + "             <option>" + year.getYear() + "</option>";
         }
-        html = html + "     </select>";
-        html = html + " </div>";
+        html = html + "         </select>";
+        html = html + "     </div>";
+
+        html = html + "     <div>";
+        html = html + "         <label for='EndYear_drop'>Select End Year:</label>";
+        html = html + "         <select id='EndYear_drop' name='EndYear_drop' onchange='updateStartYearOptions()' size='1'>";
+        html = html + "             <option value='' disabled selected hidden>--Select Year--</option>";
+        for (Climate year : years) {
+            html = html + "             <option>" + year.getYear() + "</option>";
+        }
+        html = html + "         </select>";
+        html = html + "     </div>";
+        html = html + "</div>";
+
 
         // Using some javascript to change the value of the end year drop down section
         // to be the same as the start year and vise versa
@@ -228,25 +241,15 @@ public class PageST2A implements Handler {
         html = html + "}";
         html = html + "</script>";
 
-        html = html + "   <div>";
-        html = html + "      <label for='EndYear_drop'>Select the end year:</label>";
-        html = html
-                + "      <select id='EndYear_drop' name='EndYear_drop' onchange='updateStartYearOptions()' size='1'>";
-        html = html + "<option value='' disabled selected hidden>--select year--</option>";
-        for (Climate year : years) {
-            html = html + "<option>" + year.getYear() + "</option>";
-        }
-        html = html + "      </select>";
-        html = html + "   </div>";
-
         // Dropdown to select how to format the data
         html = html + "<div>";
-        html = html + "      <label for='TypeOrder_drop'>Select how you want to order the data:</label>";
+        html = html + "      <label for='TypeOrder_drop'>Select how you want to order the data: </label>";
         html = html + "      <select id='TypeOrder_drop' name='TypeOrder_drop' size='1'>";
-        html = html + "<option value='' disabled selected hidden>--select order type--</option>";
+        html = html + "<option value='' disabled selected hidden>--Select Data Type--</option>";
         html = html + "      <option>Population Change</option>";
         html = html + "      <option>Temperature Change</option>";
-        html = html + "      </select>";
+        html = html + "      </select> <br>";
+        html = html + "<label for = 'TypeOrder_drop'>(Population or Temperature Change)</label>";
         html = html + "</div>";
 
         // Sorting order

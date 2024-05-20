@@ -40,6 +40,7 @@ public class PageST2B implements Handler {
                 + "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>";
         html = html + "<link rel='stylesheet' type='text/css' href='common.css' />";
         html = html + "<link rel='stylesheet' type='text/css' href='burgerNav.css' />";
+        html = html + "<link rel='stylesheet' type='text/css' href='pageST2B.css' />";
         html = html + "</head>";
 
         // Add the body
@@ -178,15 +179,9 @@ public class PageST2B implements Handler {
 
         // brief description of info on page
         html += """
-                   <p> While climate change is an issue that effects the world on a global scale,
-                   it can often be beneficial to explore the changes on a smaller scale -
-                   such as that of cities and states. The following table generator
-                   provides a means to explore and compare this data. Additionally the respective cities and
-                   states are ranked by the proportional change in temperature for the average, minimum and maximum
-                   temperatures for the time period chosen to be explored. They are ranked from the largest to smallest change with respect to increasing
-                   temperatures.
+                   <p> Explore local climate change impacts with our table generator. Rank cities/states by temperature changes for selected time periods.
                      </p>
-                     <p> <strong>Please Note:</strong> Data is not available for all countries. </p>
+                     <p> <strong>Please Note:  Data is not available for all countries. </strong></p>
 
                 """;
 
@@ -198,7 +193,7 @@ public class PageST2B implements Handler {
                     <form id='form-id'>
                     <label for>Select Country:</label>
                     <select name="country" onchange='document.getElementById("form-id").submit();'>
-                    <option value="" selected disabled hidden>Country</option>
+                    <option value="" selected disabled hidden>--Select Country--</option>
                 """;
 
         for (Country c : mapOfCountries) {
@@ -229,7 +224,7 @@ public class PageST2B implements Handler {
         html = html += "<br> <label for>Select Cities or States:</label>";
         html += """
                     <select name='type'>
-                    <option value="" selected disabled hidden>City/State</option>
+                    <option value="" selected disabled hidden>--Select City/State--</option>
                 """;
 
         if (countryParameterFromURL != null) {
@@ -260,67 +255,63 @@ public class PageST2B implements Handler {
             }
         }
         // dropdown menues for start and end dates
-
-        html += """
-                    </select>
-                    <br> <label for>Select Start Year:</label>
-                    <select name='from'>
-                    <option value='' selected disabled hidden>Year</option>
-                """;
+                html += """
+            </select>
+            <br> 
+            <label for>Select Start Year:</label>
+            <select name='from'>
+                <option value='' selected disabled hidden>--Select Year--</option>
+            """;
 
         for (int i = 1750; i < 2014; i++) {
             if (fromDate == i) {
                 html += "<option selected='selected' value='";
                 html += i + "'>" + i + "</option>";
             } else {
-
                 html += "<option value='";
                 html += i + "'>" + i + "</option>";
             }
         }
 
         html += "</select>";
-        html += "<br> <label for>Select End Year:</label>";
+
+        html += " <label for>Select End Year:</label>";
         html += "<select name='to'>";
         html += """
-                  <option value="" selected disabled hidden>Year</option>
-                """;
+            <option value="" selected disabled hidden>--Select Year--</option>
+            """;
 
         for (int i = 1749; i < 2014; i++) {
             if (toDate == i) {
                 html += "<option selected ='selected' value='";
                 html += i + "'>" + i + "</option>";
             } else {
-
                 html += "<option value='";
                 html += i + "'>" + i + "</option>";
             }
         }
 
-        html += "</select>";
+        html += "</select> <br>";
 
-        html += "<div>";
-        html += "<button class='showTable' type='submit' class='btn btn-primary'>Show Table</button>";
-        html += "</div>";
-        html += "<div>";
-        html = html + "<br> <button class='reset' type='reset' >Reset</button>";
-        html += "</div>";
-        html += "</form>";
+                //show table and reset button
+                html = html + "<button class='showTable' type='submit' class='btn btn-primary'>Show Table</button>";
+                html = html + "<input class='reset' type='reset' value='Reset'>";
+                html = html + "</form>";
 
-        // javascript to allow 'c' to also reset the data
-        html = html + """
-                    <script>
-                    document.addEventListener('DOMContentLoaded', function() {
-                        var button = document.querySelector('.reset');
-                        document.addEventListener('keydown', function(event) {
-                            // Check if the C key (key code 67) is pressed
-                            if (event.keyCode == 67) {
-                                button.click();
-                            }
-                        });
-                    });
-                    </script>
-                """;
+                // javascript to allow 'c' to also reset the data
+                html = html + """
+                            <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                var button = document.querySelector('.reset');
+                                document.addEventListener('keydown', function(event) {
+                                    // Check if the C key (key code 67) is pressed
+                                    if (event.keyCode == 67) {
+                                        button.click();
+                                    }
+                                });
+                            });
+                            </script>
+                        """;
         // note from jesse had to disable code below as it was breaking the footer
         // html = html + "<div class='content' style='margin-top:10px;'>";
 
