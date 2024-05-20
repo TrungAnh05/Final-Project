@@ -71,10 +71,8 @@ public class PageST2A implements Handler {
                             <div class='dropdown-content'>
                             <a href='page2A.html'>Temperature & Population Change By Country/World</a>
                             <a href='page2B.html'>Temperature Change By State/City</a>
-                            <a href='page2C.html'>Global Land-Ocean Temperature Change</a>
                             <a href='page3A.html'>Change In Temperature Over Extended Periods</a>
                             <a href='page3B.html'>Time Periods With Similar Temperature/Population</a>
-                            <a href='page3C.html'>Comparison Of Global Temperature Data Over Extended Periods</a>
                             </div>
                             </div>
                             <div class='dropDown'>
@@ -111,10 +109,8 @@ public class PageST2A implements Handler {
                                     <p>Climate Data and Analysis</p>
                                     <a href='page2A.html'>Temperature & Population Change By Country/World</a>
                                     <a href='page2B.html'>Temperature Change By State/City</a>
-                                    <a href='page2C.html'>Global Land-Ocean Temperature Change</a>
                                     <a href='page3A.html'>Change In Temperature Over Extended Periods</a>
                                     <a href='page3B.html'>Time Periods With Similar Temperature/Population</a>
-                                    <a href='page3C.html'>Comparison Of Global Temperature Data Over Extended Periods</a>
                                     <p>About Us</p>
                                     <a href='mission.html'>Our Mission</a>
                             <a href='mission.html#persona-section'>Personas</a>
@@ -318,13 +314,11 @@ public class PageST2A implements Handler {
                                       <p style='margin-top: 0;'>Shallow View</p>
                                       <a href='page2A.html'>Temperature & Population Change By Country/World</a>
                                       <a href='page2B.html'>Temperature Change By State/City</a>
-                                      <a href='page2C.html'>Global Land-Ocean Temperature Change</a>
                                     </div>
                                     <div class='footerColumn'>
                                       <p style='margin-top: 0;'>In-Depth View</p>
                                       <a href='page3A.html'>Change In Temperature Over Extended Periods</a>
                                       <a href='page3B.html'>Time Periods With Similar Temperature/Population</a>
-                                      <a href='page3C.html'>Comparison Of Global Temperature Data Over Extended Periods</a>
                                     </div>
                                     <div class='footerColumn'>
                                       <p style='margin-top: 0;'>About</p>

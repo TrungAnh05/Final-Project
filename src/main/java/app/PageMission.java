@@ -301,18 +301,6 @@ public class PageMission implements Handler {
         </section>
         """;
 
-    ArrayList<StudentInfo> info = JDBCConnection.getStudentInfo();
-
-    for (StudentInfo s : info) {
-
-      html += "<h3>" + s.getFname() + " " + s.getLname() + "</h3>";
-      html += " <h4> Student Number </h4>";
-      html += "<p>" + s.getStudentNumber() + "</p>";
-      html += " <h4>  Email </h4>";
-      html += "<p>" + s.getEmail() + "</p>";
-
-    }
-
     // Finish the List HTML
     html += "</ul>";
     html = html + "</section>";
