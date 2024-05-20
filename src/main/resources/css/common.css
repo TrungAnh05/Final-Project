@@ -335,15 +335,9 @@ tr:active {
 }
 
 .content h2 {
-<<<<<<< HEAD
-   color: #000000;
-=======
   color: #000000;
-<<<<<<< HEAD
->>>>>>> Mission
-   
-=======
->>>>>>> Mission
+
+  color: #000000;
 }
 .content select {
   font-family: "Roboto", Arial, sans-serif;
