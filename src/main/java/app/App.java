@@ -38,24 +38,19 @@ public class App {
         // All webpages are listed here as GET pages
         app.get(PageIndex.URL, new PageIndex());
         app.get(PageMission.URL, new PageMission());
-        app.get(PageLanding.URL, new PageLanding());
+        app.get(Page1B.URL, new Page1B());
         app.get(PageST2A.URL, new PageST2A());
         app.get(PageST2B.URL, new PageST2B());
         app.get(PageST3A.URL, new PageST3A());
         app.get(PageST3B.URL, new PageST3B());
-        app.get(PageST2C.URL, new PageST2C());
-        app.get(PageST3C.URL, new PageST3C());
-
         // Add / uncomment POST commands for any pages that need web form POSTS
         app.post(PageIndex.URL, new PageIndex());
         // app.post(PageMission.URL, new PageMission());
-        app.post(PageLanding.URL, new PageLanding());
+        app.post(Page1B.URL, new Page1B());
         app.post(PageST2A.URL, new PageST2A());
         app.post(PageST2B.URL, new PageST2B());
-        app.post(PageST2C.URL, new PageST2C());
         app.post(PageST3A.URL, new PageST3A());
         // app.post(PageST3B.URL, new PageST3B());
-        app.post(PageST3C.URL, new PageST3C());
     }
 
 }

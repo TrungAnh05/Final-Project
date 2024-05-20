@@ -6,11 +6,10 @@
   top: 0;
   right: 0;
   background-color: rgba(43, 50, 55, 0.95);
-  
+
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
-  
 }
 
 .sidenav a {
@@ -29,12 +28,10 @@
   display: block;
   padding-bottom: 0px;
   margin-bottom: 0px;
-  
 }
 
 .sidenav a:hover {
   color: #6cb358;
-  
   /*text-decoration: underline;    OUT VOTED*/
 }
 
