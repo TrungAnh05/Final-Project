@@ -37,7 +37,11 @@ public class PageMission implements Handler {
     // Add some CSS (external file)
     html = html + "<link rel='stylesheet' type='text/css' href='common.css' />";
     html = html + "<link rel='stylesheet' type='text/css' href='burgerNav.css' />";
+<<<<<<< HEAD
     html = html + "<link rel='stylesheet' type='text/css' href='ourMission.css' />";
+=======
+    html = html + "<link rel='stylesheet' type='text/css' href='ourmission.css' />";
+>>>>>>> Mission
     // adds a cool icon on the nav menu
     html = html
         + "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>";
