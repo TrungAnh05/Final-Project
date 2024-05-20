@@ -46,21 +46,10 @@ public class PageIndex implements Handler {
     // Add the body
     html = html + "<body>";
 
-    // Add header content block with logo on the right and add wrapper
-    html = html
-        + """
-                    <div class='header'>
-                    <h1>
-                    <a href='/'><img src='ClimateLogo.png' class='top-image' alt='Website Logo' height='120' width = '120' style='float: left;'></a>
-                        Climate Change Awareness
-                    </h1>
-                    </div>
-            """;
-    
     html = html
         + """
             <section class="showcase">
-            <video src="22059-325253411_medium.mp4" muted loop autoplay></video>
+            <video src="211693_medium.mp4" muted loop autoplay></video>
             <div class="overlay"></div>
             <div class="text">
             <h2>Welcome to<br> 
