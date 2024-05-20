@@ -1,16 +1,16 @@
 package app;
-
+ 
 import java.util.ArrayList;
-
+ 
 import io.javalin.http.Context;
 import io.javalin.http.Handler;
-
+ 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+ 
 /**
  * Example Index HTML class using Javalin
  * <p>
@@ -21,19 +21,19 @@ import java.sql.Statement;
  * @author Santha Sumanasekara, 2021. email: santha.sumanasekara@rmit.edu.au
  */
 public class PageMission implements Handler {
-
+ 
   // URL of this page relative to http://localhost:7001/
   public static final String URL = "/mission.html";
-
+ 
   @Override
   public void handle(Context context) throws Exception {
     // Create a simple HTML webpage in a String
     String html = "<html>";
-
+ 
     // Add some Head information
     html += "<head>" + "<meta charset='UTF-8'>" +
         "<title>Our Mission</title>";
-
+ 
     // Add some CSS (external file)
     html = html + "<link rel='stylesheet' type='text/css' href='common.css' />";
     html = html + "<link rel='stylesheet' type='text/css' href='burgerNav.css' />";
@@ -42,123 +42,28 @@ public class PageMission implements Handler {
     html = html
         + "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>";
     html += "</head>";
-
+ 
     // Add the body
     html += "<body>";
-
-    // Add header content block
-    html += """
-            <div class='header'>
-            <h1><a href='/'><img src='ClimateLogo.png' class='top-image' alt='Website Logo' height='120' width = '120' style='float: left;'></a>
-                <h1>Climate Change Awareness</h1>
-            </div>
-        """;
-
+ 
+    // Add header content block with logo on the right
+    html += CommonElements.Header();
     // Add the topnav
-    html = html + """
-        <div class='topnav'>
-            <a href='/'>Home</a>
-            <div class='dropDown'>
-                <button class='dropbtn'>Climate Data and Analysis
-                    <i class='fa fa-caret-down'></i>
-                </button>
-                <div class='dropdown-content'>
-                    <a href='page2A.html'>Temperature & Population Change By Country/World</a>
-                    <a href='page2B.html'>Temperature Change By State/City</a>
-                    <a href='page2C.html'>Global Land-Ocean Temperature Change</a>
-                    <a href='page3A.html'>Change In Temperature Over Extended Periods</a>
-                    <a href='page3B.html'>Time Periods With Similar Temperature/Population</a>
-                    <a href='page3C.html'>Comparison Of Global Temperature Data Over Extended Periods</a>
-                </div>
-            </div>
-            <div class='dropDown'>
-                <button class='dropbtn'>About Us
-                    <i class='fa fa-caret-down'></i>
-                </button>
-                <div class='dropdown-content'>
-                    <a href='mission.html'>Our Mission</a>
-                    <a href='mission.html#persona-section'>Personas</a>
-                    <a href='mission.html#aboutUs-section'>Contact Us</a>
-                </div>
-            </div>
-        </div>
-        """;
+    html += CommonElements.Topnav();
 
-    html = html + "<script>";
-    html = html + """
+    //Add go to homepage and open nav function
+    html += CommonElements.goToHomePageandOpenNav();
 
-                        function openNav() {
-          document.getElementById('mySidenav').style.width = '250px';
-        }
+    //Add SideNavBar
+    html += CommonElements.SideNavBar();
 
-        function closeNav() {
-          document.getElementById('mySidenav').style.width = '0px';
-        }
-                                        """;
-    html = html + "</script>";
-    html = html + "<div class='SideNavBar'>";
-    html = html
-        + """
-                    <div id='mySidenav' class='sidenav'>
-                        <a href='javascript:void(0)' class='closebtn' onclick='closeNav()'>&times;</a>
-                        <a href='/'>Home</a>
-                        <p>Climate Data and Analysis</p>
-                        <a href='page2A.html'>Temperature & Population Change By Country/World</a>
-                        <a href='page2B.html'>Temperature Change By State/City</a>
-                        <a href='page2C.html'>Global Land-Ocean Temperature Change</a>
-                        <a href='page3A.html'>Change In Temperature Over Extended Periods</a>
-                        <a href='page3B.html'>Time Periods With Similar Temperature/Population</a>
-                        <a href='page3C.html'>Comparison Of Global Temperature Data Over Extended Periods</a>
-                        <p>About Us</p>
-                        <a href='mission.html'>Our Mission</a>
-                <a href='mission.html#persona-section'>Personas</a>
-                <a href='mission.html#aboutUs-section'>Contact Us</a>
-                <p>Help & Support</p>
-                <a href='PageHelp.html'>Page Assistance</a>
-                <a href='PageHelp.html#faq-section'>FAQ</a>
-                <a href='PageHelp.html#advanced-section'>Advanced Features</a>
-
-                    </div>
-            <span style='color: #f1f1f1; position: fixed; top:10px; right:20px; font-size:40px; cursor:pointer' onclick='openNav()'> &#9776;</span>
-                    """;
-    html = html + "</div>";
-    html = html + "<script>";
-    // take to help page
-    html = html + """
-
-             // Function to navigate to the help page
-        function goToHelpPage() {
-          window.location.href = 'PageHelp.html';
-        }
-                                document.addEventListener('keydown', function(event) {
-                      // Check if the h key (key code 72) is pressed
-                      if (event.keyCode === 72) {
-                        goToHelpPage();
-                      }
-                    });
-                                """;
-    // take to home page
-    html = html + """
-             // Function to navigate to the home page
-        function goToHomePage() {
-          window.location.href = '/';
-        }
-
-        document.addEventListener('keydown', function(event) {
-          // Check if the Esc key (key code 27) is pressed
-          if (event.keyCode === 27) {
-            goToHomePage();
-          }
-        });
-                    """;
-    html = html + "</script>";
     // Add Div for page Content
-    html += "<div class='content'>";
-
+    html = html + "<div class='content1'>";
+ 
     html += """
               <section class="mission-section">
           <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/6f4e7c4818131112a6a66f8c1905a586950dc38514575988ac460f581d8161af?apiKey=51f4311d3f4749feb9f6669c989090bb&" alt="" class="mission-background" loading="lazy" />
-          
+         
           <div class="mission-content">
             <div class="mission-grid">
               <div class="mission-title-column">
@@ -173,84 +78,107 @@ public class PageMission implements Handler {
           </div>
         </section>
                         """;
-
+ 
     // Personas Sections
     html = html + "<section id='persona-section'>";
-    html += """
-      
-<section class="persona-section">
-<img src="https://cdn.builder.io/api/v1/image/assets/TEMP/d4e9ec81c06cd6850d8e63ccfcc03b5d2b780920adeb66353de32327ece1d1bc?apiKey=51f4311d3f4749feb9f6669c989090bb&" alt="" class="background-image" />
-<div class="content-wrapper">
-  <h2 class="section-title">Persona</h2>
-  <div class="persona-card">
-    <div class="persona-content">
-      <div class="persona-details">
-        <p class="persona-description">
-          Heath Young<br />
-          "I just want to look at broad climate change statistics and get a better understanding of how climate change affects me and the world today."<br />
-          <br />
-          <span class="bold-text">Background</span><br />
-          <br />
-          <br />
-          <span class="bold-text">Experience</span><br />
-          <br />
-          <br />
-          <span class="bold-text">Requirements</span><br />
-        </p>
-      </div>
-      <div class="persona-image-wrapper">
-        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a7478163189cfaec779a41db75d922d765dd685afad78ed5b135222acf5f455b?apiKey=51f4311d3f4749feb9f6669c989090bb&" alt="Heath Young" class="persona-image" />
-      </div>
-    </div>
-  </div>
-  <div class="persona-card">
-    <div class="persona-content">
-      <div class="persona-details">
-        <p class="persona-description">
-          Heath Young<br />
-          "I just want to look at broad climate change statistics and get a better understanding of how climate change affects me and the world today."<br />
-          <br />
-          <span class="bold-text">Background</span><br />
-          <br />
-          <br />
-          <span class="bold-text">Experience</span><br />
-          <br />
-          <br />
-          <span class="bold-text">Requirements</span><br />
-        </p>
-      </div>
-      <div class="persona-image-wrapper">
-        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/8f874fe63df2d1d45e69007cd9e8c94fd7c2f82dd2cf1389438bec827ab70677?apiKey=51f4311d3f4749feb9f6669c989090bb&" alt="Heath Young" class="persona-image" />
-      </div>
-    </div>
-  </div>
-  <div class="persona-card">
-    <div class="persona-content">
-      <div class="persona-details">
-        <p class="persona-description">
-          Heath Young<br />
-          "I just want to look at broad climate change statistics and get a better understanding of how climate change affects me and the world today."<br />
-          <br />
-          <span class="bold-text">Background</span><br />
-          <br />
-          <br />
-          <span class="bold-text">Experience</span><br />
-          <br />
-          <br />
-          <span class="bold-text">Requirements</span><br />
-        </p>
-      </div>
-      <div class="persona-image-wrapper">
-        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/de3543b17432724c92cd696c39e5919cc94c5174d7a2ee17ded47cede0a7ff2e?apiKey=51f4311d3f4749feb9f6669c989090bb&" alt="Heath Young" class="persona-image" />
-      </div>
-    </div>
-  </div>
-</div>
-</section>
-                """;
-
+    html = html + "<section class='persona-section'>";
+    html = html + "<img src='https://cdn.builder.io/api/v1/image/assets/TEMP/d4e9ec81c06cd6850d8e63ccfcc03b5d2b780920adeb66353de32327ece1d1bc?apiKey=51f4311d3f4749feb9f6669c989090bb&'' alt='' class='background-image' />";
+    html = html + "<div class='content-wrapper'>";
+    html = html + "<h2 class='section-title'>Persona</h2>";
     
+    html = html + "<div class='persona-card'>";
+    html = html + "<div class='persona-content'>";
+        html = html + "<div class='persona-details'>";
+            html = html + "<div class='persona-description'>";
+                
+            ArrayList<PersonaData> data = JDBCConnection.getPersonaData();
+
+            for(int i=0; i<1; i++){
+              ArrayList<PersonaData> persona = JDBCConnection.getPersonaData();;
+              String Name = persona.get(i).getName();
+              String Quote = persona.get(i).getQuote();
+              String Background = persona.get(i).getBackground();
+              String Experience = persona.get(i).getExperience();
+              String Requirements = persona.get(i).getRequirements();
+          
+              html += "<h2>" + Name + "</h2>";
+              html += "<p>" + Quote + "</p>";
+              html += " <h4> Background </h4>";
+              html += "<p>" + Background + "</p>";
+              html += " <h4> Experience </h4>";
+              html += "<p>" + Experience + "</p>";
+              html += " <h4> Requirements </h4>";
+              html += "<p>" + Requirements + "</p>";
+              html += String.format("<img style='width: 200px; height: 200px; float: right;' src='%s'/>",
+              persona.get(i).getImagePath());
+              html = html + "</div>";
+              }
+                html = html + "</div>";
+            html = html + "</div>";
+        html = html + "</div>";
+
+    html = html + "<div class='persona-card'>";
+    html = html + "<div class='persona-content'>";
+        html = html + "<div class='persona-details'>";
+            html = html + "<div class='persona-description'>";
+
+            for(int i=1; i<2; i++){
+              ArrayList<PersonaData> persona = JDBCConnection.getPersonaData();;
+              String Name = persona.get(i).getName();
+              String Quote = persona.get(i).getQuote();
+              String Background = persona.get(i).getBackground();
+              String Experience = persona.get(i).getExperience();
+              String Requirements = persona.get(i).getRequirements();
+          
+              html += "<h2>" + Name + "</h2>";
+              html += "<p>" + Quote + "</p>";
+              html += " <h4> Background </h4>";
+              html += "<p>" + Background + "</p>";
+              html += " <h4> Experience </h4>";
+              html += "<p>" + Experience + "</p>";
+              html += " <h4> Requirements </h4>";
+              html += "<p>" + Requirements + "</p>";
+              html += String.format("<img style='width: 200px; height: 200px; float: right;' src='%s'/>",
+              persona.get(i).getImagePath());
+              html = html + "</div>";
+              }
+                html = html + "</div>";
+            html = html + "</div>";
+        html = html + "</div>";
+
+    html = html + "<div class='persona-card'>";
+    html = html + "<div class='persona-content'>";
+        html = html + "<div class='persona-details'>";
+            html = html + "<div class='persona-description'>";
+                
+            for(int i=2; i<3; i++){
+              ArrayList<PersonaData> persona = JDBCConnection.getPersonaData();;
+              String Name = persona.get(i).getName();
+              String Quote = persona.get(i).getQuote();
+              String Background = persona.get(i).getBackground();
+              String Experience = persona.get(i).getExperience();
+              String Requirements = persona.get(i).getRequirements();
+          
+              html += "<h2>" + Name + "</h2>";
+              html += "<p>" + Quote + "</p>";
+              html += " <h4> Background </h4>";
+              html += "<p>" + Background + "</p>";
+              html += " <h4> Experience </h4>";
+              html += "<p>" + Experience + "</p>";
+              html += " <h4> Requirements </h4>";
+              html += "<p>" + Requirements + "</p>";
+              html += String.format("<img style='width: 200px; height: 200px; float: right;' src='%s'/>",
+              persona.get(i).getImagePath());
+              html = html + "</div>";
+              }
+                html = html + "</div>";
+            html = html + "</div>";
+        html = html + "</div>";
+
+    html = html + "</div>";
     html = html + "</section>";
+    html = html + "</section>";
+
     // Student info section
     html = html + "<section id='aboutUs-section'>";
     html += """
@@ -261,93 +189,50 @@ public class PageMission implements Handler {
             </br>
             are WE
           </h2>
-          <div class="member-info-left">
-            Chang Fang Cih
-            <br />
-            Student Number s4073761
-            <br />
-            Email
-            <br />
-            s4073761@rmit.edu.vn
-            <br />
-            <br />
-            Nguyen Pham Trung Anh
-            <br />
-            Student Number s4053394
-            <br />
-            Email
-            <br />
-            s4053394@rmit.edu.vn
-          </div>
-          <div class="member-info-right">
-            Ngo Dang Khoi
-            <br />
-            Student Number s4033100
-            <br />
-            Email
-            <br />
-            s4033100@rmit.edu.vn
-            <br />
-            <br />
-            Huynh Minh Nam
-            <br />
-            Student Number s3974896
-            <br />
-            Email
-            <br />
-            s3974896@rmit.edu.vn
-          </div>
-          <div class="vertical-divider-right"></div>
-        </section>
-        """;
+            """;
+            html = html + "<div class='member-info-left'>";
 
-    // Finish the List HTML
-    html += "</ul>";
-    html = html + "</section>";
+            for(int i=0; i<=1; i++){
+              ArrayList<StudentInfo> info = JDBCConnection.getStudentInfo();
+              String FName = info.get(i).getFname();
+              String LName = info.get(i).getLname();
+              String StudentNumber = info.get(i).getStudentNumber();
+              String Email = info.get(i).getEmail();
+          
+              html +=  FName + " " + LName + "</br>" + "</br>";
+              html += "Student Number " + StudentNumber + "</br>" + "</br>";
+              html += "Email" + "</br>";
+              html +=  Email + "</br>" + "</br>" + "</br>";
+              }
+
+          html = html + "</div>";
+
+          html = html + "<div class='member-info-right'>";
+            for(int i=2; i<=3; i++){
+            ArrayList<StudentInfo> info = JDBCConnection.getStudentInfo();
+            String FName = info.get(i).getFname();
+            String LName = info.get(i).getLname();
+            String StudentNumber = info.get(i).getStudentNumber();
+            String Email = info.get(i).getEmail();
+
+            html +=  FName + " " + LName + "</br>" + "</br>";
+            html += "Student Number " + StudentNumber + "</br>" + "</br>";
+            html += "Email" + "</br>";
+            html +=  Email + "</br>" + "</br>" + "</br>";
+            }
+            html = html + "</div>";
+          html = html + "<div class='vertical-divider-right'>";
+          html = html + "</div>";
+        html = html + "</section>";
+
     // Close Content div
     html += "</div>";
-
+ 
     // Footer
-    html = html
-        + """
-            <div class='footer'>
-
-                      <div class='footerBlock'>
-                                  <div class='footerColumn'>
-                                    <p style='margin-top: 0;'>Shallow View</p>
-                                    <a href='page2A.html'>Temperature & Population Change By Country/World</a>
-                                    <a href='page2B.html'>Temperature Change By State/City</a>
-                                    <a href='page2C.html'>Global Land-Ocean Temperature Change</a>
-                                  </div>
-                                  <div class='footerColumn'>
-                                    <p style='margin-top: 0;'>In-Depth View</p>
-                                    <a href='page3A.html'>Change In Temperature Over Extended Periods</a>
-                                    <a href='page3B.html'>Time Periods With Similar Temperature/Population</a>
-                                    <a href='page3C.html'>Comparison Of Global Temperature Data Over Extended Periods</a>
-                                  </div>
-                                  <div class='footerColumn'>
-                                    <p style='margin-top: 0;'>About</p>
-                                    <a href='mission.html'>Our Mission</a>
-                                    <a href='mission.html#persona-section'>Personas</a>
-                                    <a href='mission.html#aboutUs-section'>Contact Us</a>
-                                  </div>
-                                  <div class='footerColumn'>
-                                    <p style='margin-top: 0;'>Help & Support</p>
-                                    <a href='PageHelp.html'>Page Assistance</a>
-                                    <a href='PageHelp.html#faq-section'>FAQ</a>
-                                    <a href='PageHelp.html#advanced-section'>Advanced Features</a>
-
-                                  </div>
-                                </div>
-                              </div>
-                  """;
-
-    // Finish the HTML webpage
-    html += "</body>" + "</html>";
-
+        html = html += CommonElements.Footer();
+ 
     // DO NOT MODIFY THIS
     // Makes Javalin render the webpage
     context.html(html);
   }
-
 }

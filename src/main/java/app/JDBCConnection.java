@@ -753,342 +753,6 @@ public class JDBCConnection {
         return distinctCityName;
     }
 
-    /**
-     * Get all of the LGAs in the database.
-     *
-     * @return Returns an ArrayList of LGA objects
-     */
-
-    public ArrayList<Climate> getLandOceanYears() {
-        // Create the ArrayList of Climate objects to return
-        ArrayList<Climate> climates = new ArrayList<Climate>();
-
-        // Setup the variable for the JDBC connection
-        Connection connection = null;
-
-        try {
-            // Connect to JDBC data base
-            connection = DriverManager.getConnection(DATABASE);
-
-            // Prepare a new SQL Query & Set a timeout
-            Statement statement = connection.createStatement();
-            statement.setQueryTimeout(30);
-
-            // The Query
-            String query = """
-                        SELECT Year FROM GlobalLandOceanTemp
-                    WHERE GlobalLandOceanTemp.AvgOceanTemp IS NOT NULL
-                    AND GlobalLandOceanTemp.MaxOceanTemp IS NOT NULL
-                    AND GlobalLandOceanTemp.MinOceanTemp IS NOT NULL
-                    """;
-
-            // Get Result
-            ResultSet results = statement.executeQuery(query);
-
-            // Process all of the results
-            while (results.next()) {
-                // Lookup the columns we need
-
-                int year = results.getInt("year");
-
-                // Create a Climate Object
-                Climate climate = new Climate();
-                climate.setYear(year);
-
-                // Add the lga object to the array
-                climates.add(climate);
-            }
-
-            // Close the statement because we are done with it
-            statement.close();
-        } catch (SQLException e) {
-            // If there is an error, lets just pring the error
-            System.err.println(e.getMessage());
-        } finally {
-            // Safety code to cleanup
-            try {
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                // connection close failed.
-                System.err.println(e.getMessage());
-            }
-        }
-
-        // Finally we return all of the lga
-        return climates;
-    }
-
-    public ArrayList<Climate> getAllLandOceanDataASC() {
-        // Create the ArrayList of Climate objects to return
-        ArrayList<Climate> climates = new ArrayList<Climate>();
-
-        // Setup the variable for the JDBC connection
-        Connection connection = null;
-
-        try {
-            // Connect to JDBC data base
-            connection = DriverManager.getConnection(DATABASE);
-
-            // Prepare a new SQL Query & Set a timeout
-            Statement statement = connection.createStatement();
-            statement.setQueryTimeout(30);
-
-            // The Query
-            String query = """
-                        SELECT * FROM GlobalLandOceanTemp
-                    WHERE GlobalLandOceanTemp.AvgOceanTemp IS NOT NULL
-                    AND GlobalLandOceanTemp.MaxOceanTemp IS NOT NULL
-                    AND GlobalLandOceanTemp.MinOceanTemp IS NOT NULL
-                    """;
-
-            // Get Result
-            ResultSet results = statement.executeQuery(query);
-
-            // Process all of the results
-            while (results.next()) {
-                // Lookup the columns we need
-
-                int year = results.getInt("year");
-                float averageTemperature = results.getFloat("AvgOceanTemp");
-                float minimumTemperature = results.getFloat("MinOceanTemp");
-                float maximumTemperature = results.getFloat("MaxOceanTemp");
-
-                // Create a Climate Object
-                Climate climate = new Climate();
-                climate.setYear(year);
-                climate.setAverageTemperature(averageTemperature);
-                climate.setMinimumTemperature(minimumTemperature);
-                climate.setMaximumTemperature(maximumTemperature);
-
-                // Add the lga object to the array
-                climates.add(climate);
-            }
-
-            // Close the statement because we are done with it
-            statement.close();
-        } catch (SQLException e) {
-            // If there is an error, lets just pring the error
-            System.err.println(e.getMessage());
-        } finally {
-            // Safety code to cleanup
-            try {
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                // connection close failed.
-                System.err.println(e.getMessage());
-            }
-        }
-
-        // Finally we return all of the lga
-        return climates;
-    }
-
-    public ArrayList<Climate> getAllLandOceanDataDESC() {
-        // Create the ArrayList of Climate objects to return
-        ArrayList<Climate> climates = new ArrayList<Climate>();
-
-        // Setup the variable for the JDBC connection
-        Connection connection = null;
-
-        try {
-            // Connect to JDBC data base
-            connection = DriverManager.getConnection(DATABASE);
-
-            // Prepare a new SQL Query & Set a timeout
-            Statement statement = connection.createStatement();
-            statement.setQueryTimeout(30);
-
-            // The Query
-            String query = """
-                        SELECT * FROM GlobalLandOceanTemp
-                    WHERE GlobalLandOceanTemp.AvgOceanTemp IS NOT NULL
-                    AND GlobalLandOceanTemp.MaxOceanTemp IS NOT NULL
-                    AND GlobalLandOceanTemp.MinOceanTemp IS NOT NULL
-                    ORDER BY Year DESC
-                    """;
-
-            // Get Result
-            ResultSet results = statement.executeQuery(query);
-
-            // Process all of the results
-            while (results.next()) {
-                // Lookup the columns we need
-
-                int year = results.getInt("year");
-                float averageTemperature = results.getFloat("AvgOceanTemp");
-                float minimumTemperature = results.getFloat("MinOceanTemp");
-                float maximumTemperature = results.getFloat("MaxOceanTemp");
-
-                // Create a Climate Object
-                Climate climate = new Climate();
-                climate.setYear(year);
-                climate.setAverageTemperature(averageTemperature);
-                climate.setMinimumTemperature(minimumTemperature);
-                climate.setMaximumTemperature(maximumTemperature);
-
-                // Add the lga object to the array
-                climates.add(climate);
-            }
-
-            // Close the statement because we are done with it
-            statement.close();
-        } catch (SQLException e) {
-            // If there is an error, lets just pring the error
-            System.err.println(e.getMessage());
-        } finally {
-            // Safety code to cleanup
-            try {
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                // connection close failed.
-                System.err.println(e.getMessage());
-            }
-        }
-
-        // Finally we return all of the lga
-        return climates;
-    }
-
-    // Method to get range of global population and temp data (1A)
-    public ArrayList<Climate> getPopulationTempRanges() {
-        // Create the ArrayList of Climate objects to return
-        ArrayList<Climate> climates = new ArrayList<Climate>();
-
-        // Setup the variable for the JDBC connection
-        Connection connection = null;
-
-        try {
-            // Connect to JDBC data base
-            connection = DriverManager.getConnection(DATABASE);
-
-            // Prepare a new SQL Query & Set a timeout
-            Statement statement = connection.createStatement();
-            statement.setQueryTimeout(30);
-
-            // The Query
-            String query = """
-                    SELECT p.Year, p.PopulationLevel, t.AvgAirTemp, t.MinAirTemp, t.MaxAirTemp
-                    FROM CountryPopulation AS p
-                    JOIN GlobalTemp AS t ON p.Year = t.Year
-                    JOIN Country As c ON p.CountryId = c.CountryId
-                    WHERE p.Year IN (1960, 2013)
-                    AND c.CountryName = 'World';
-                        """;
-
-            // Get Result
-            ResultSet results = statement.executeQuery(query);
-
-            // Process all of the results
-            while (results.next()) {
-                // Lookup the columns we need
-
-                int year = results.getInt("year");
-                long populationLevel = results.getLong("PopulationLevel");
-                float averageTemperature = results.getFloat("AvgAirTemp");
-                float minimumTemperature = results.getFloat("MinAirTemp");
-                float maximumTemperature = results.getFloat("MaxAirTemp");
-
-                // Create a Climate Object
-                Climate climate = new Climate();
-                climate.setYear(year);
-                climate.setPopulationLevel(populationLevel);
-                climate.setAverageTemperature(averageTemperature);
-                climate.setMinimumTemperature(minimumTemperature);
-                climate.setMaximumTemperature(maximumTemperature);
-
-                // Add the lga object to the array
-                climates.add(climate);
-            }
-
-            // Close the statement because we are done with it
-            statement.close();
-        } catch (SQLException e) {
-            // If there is an error, lets just pring the error
-            System.err.println(e.getMessage());
-        } finally {
-            // Safety code to cleanup
-            try {
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                // connection close failed.
-                System.err.println(e.getMessage());
-            }
-        }
-
-        // Finally we return all of the lga
-        return climates;
-    }
-
-    public ArrayList<Climate> getFAQ() {
-        // Create the ArrayList of Climate objects to return
-        ArrayList<Climate> climates = new ArrayList<Climate>();
-
-        // Setup the variable for the JDBC connection
-        Connection connection = null;
-
-        try {
-            // Connect to JDBC data base
-            connection = DriverManager.getConnection(DATABASE);
-
-            // Prepare a new SQL Query & Set a timeout
-            Statement statement = connection.createStatement();
-            statement.setQueryTimeout(30);
-
-            // The Query
-            String query = """
-                    SELECT FAQ.Question, FAQ.Answer
-                    FROM FAQ
-                    ;
-                        """;
-
-            // Get Result
-            ResultSet results = statement.executeQuery(query);
-
-            // Process all of the results
-            while (results.next()) {
-                // Lookup the columns we need
-
-                String question = results.getString("Question");
-                String answer = results.getString("Answer");
-
-                // Create a Climate Object
-                Climate climate = new Climate();
-                climate.setQuestion(question);
-                climate.setAnswer(answer);
-
-                // Add the lga object to the array
-                climates.add(climate);
-            }
-
-            // Close the statement because we are done with it
-            statement.close();
-        } catch (SQLException e) {
-            // If there is an error, lets just pring the error
-            System.err.println(e.getMessage());
-        } finally {
-            // Safety code to cleanup
-            try {
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                // connection close failed.
-                System.err.println(e.getMessage());
-            }
-        }
-
-        // Finally we return all of the lga
-        return climates;
-    }
-
     public ArrayList<Climate> getGlobalTempYears() {
         // Create the ArrayList of Climate objects to return
         ArrayList<Climate> climates = new ArrayList<Climate>();
@@ -1512,251 +1176,6 @@ public class JDBCConnection {
         return climates;
     }
 
-    public ArrayList<Climate> getWorldLandOceanAverageTempOverPeriod(ArrayList<String> startYears,
-                                                                     ArrayList<String> endYears,
-                                                                     ArrayList<String> dataTypes, String OrderBy) {
-        // Create the ArrayList of Climate objects to return
-        ArrayList<Climate> climates = new ArrayList<Climate>();
-
-        // Setup the variable for the JDBC connection
-        Connection connection = null;
-
-        try {
-            // Connect to JDBC data base
-            connection = DriverManager.getConnection(DATABASE);
-
-            // Prepare a new SQL Query & Set a timeout
-            Statement statement = connection.createStatement();
-            statement.setQueryTimeout(30);
-            String query = "";
-            for (int i = 0; i < startYears.size(); i++) {
-                if (startYears.size() == 1 || i == startYears.size() - 1) {
-                    if (dataTypes.get(i).equals("Land Data")) {
-                        query = query + "SELECT '" + dataTypes.get(i) + "' AS DataType, SY.StartYear, ";
-                        query = query + "ROUND(SY.StartYearAvg, 2) AS StartYearAvg, ";
-                        query = query
-                                + "EY.EndYear, ROUND(EY.EndYearAvg, 2) AS EndYearAvg, ROUND(AVG(ATOP.AvgAirTemp), 2) AS AverageTempOverPeriod, ROUND(ABS((EY.EndYearAvg - SY.StartYearAvg) / SY.StartYearAvg) * 100, 2) AS ChangeInAvgTempPercentage ";
-                        query = query
-                                + "FROM (SELECT Year AS StartYear, AvgAirTemp AS StartYearAvg FROM GlobalTemp WHERE Year = '"
-                                + startYears.get(i) + "') AS SY ";
-                        query = query
-                                + "JOIN (SELECT Year AS EndYear, AvgAirTemp AS EndYearAvg FROM GlobalTemp WHERE Year = '"
-                                + endYears.get(i) + "') AS EY JOIN GlobalTemp AS ATOP ";
-                        query = query
-                                + "ON ATOP.Year BETWEEN SY.StartYear AND EY.EndYear GROUP BY SY.StartYear, EY.EndYear ";
-                    } else if (dataTypes.get(i).equals("Land-Ocean Data")) {
-                        // The Query
-                        query = query + "SELECT '" + dataTypes.get(i) + "' AS DataType, SY.StartYear, ";
-                        query = query + "ROUND(SY.StartYearAvg, 2) AS StartYearAvg, ";
-                        query = query
-                                + "EY.EndYear, ROUND(EY.EndYearAvg, 2) AS EndYearAvg, ROUND(AVG(ATOP.AvgOceanTemp), 2) AS AverageTempOverPeriod, ROUND(ABS((EY.EndYearAvg - SY.StartYearAvg) / SY.StartYearAvg) * 100, 2) AS ChangeInAvgTempPercentage ";
-                        query = query
-                                + "FROM (SELECT Year AS StartYear, AvgOceanTemp AS StartYearAvg FROM GlobalLandOceanTemp WHERE Year = '"
-                                + startYears.get(i) + "') AS SY ";
-                        query = query
-                                + "JOIN (SELECT Year AS EndYear, AvgOceanTemp AS EndYearAvg FROM GlobalLandOceanTemp WHERE Year = '"
-                                + endYears.get(i) + "') AS EY JOIN GlobalLandOceanTemp AS ATOP ";
-                        query = query
-                                + "ON ATOP.Year BETWEEN SY.StartYear AND EY.EndYear GROUP BY SY.StartYear, EY.EndYear ";
-                    }
-                } else {
-
-                    if (dataTypes.get(i).equals("Land Data")) {
-                        query = query + "SELECT '" + dataTypes.get(i) + "' AS DataType, SY.StartYear, ";
-                        query = query + "ROUND(SY.StartYearAvg, 2) AS StartYearAvg, ";
-                        query = query
-                                + "EY.EndYear, ROUND(EY.EndYearAvg, 2) AS EndYearAvg, ROUND(AVG(ATOP.AvgAirTemp), 2) AS AverageTempOverPeriod, ROUND(ABS((EY.EndYearAvg - SY.StartYearAvg) / SY.StartYearAvg) * 100, 2) AS ChangeInAvgTempPercentage ";
-                        query = query
-                                + "FROM (SELECT Year AS StartYear, AvgAirTemp AS StartYearAvg FROM GlobalTemp WHERE Year = '"
-                                + startYears.get(i) + "') AS SY ";
-                        query = query
-                                + "JOIN (SELECT Year AS EndYear, AvgAirTemp AS EndYearAvg FROM GlobalTemp WHERE Year = '"
-                                + endYears.get(i) + "') AS EY JOIN GlobalTemp AS ATOP ";
-                        query = query
-                                + "ON ATOP.Year BETWEEN SY.StartYear AND EY.EndYear GROUP BY SY.StartYear, EY.EndYear ";
-                        query = query + "UNION ";
-
-                    } else if (dataTypes.get(i).equals("Land-Ocean Data")) {
-                        // The Query
-                        query = query + "SELECT '" + dataTypes.get(i) + "' AS DataType, SY.StartYear, ";
-                        query = query + "ROUND(SY.StartYearAvg, 2) AS StartYearAvg, ";
-                        query = query
-                                + "EY.EndYear, ROUND(EY.EndYearAvg, 2) AS EndYearAvg, ROUND(AVG(ATOP.AvgOceanTemp), 2) AS AverageTempOverPeriod, ROUND(ABS((EY.EndYearAvg - SY.StartYearAvg) / SY.StartYearAvg) * 100, 2) AS ChangeInAvgTempPercentage ";
-                        query = query
-                                + "FROM (SELECT Year AS StartYear, AvgOceanTemp AS StartYearAvg FROM GlobalLandOceanTemp WHERE Year = '"
-                                + startYears.get(i) + "') AS SY ";
-                        query = query
-                                + "JOIN (SELECT Year AS EndYear, AvgOceanTemp AS EndYearAvg FROM GlobalLandOceanTemp WHERE Year = '"
-                                + endYears.get(i) + "') AS EY JOIN GlobalLandOceanTemp AS ATOP ";
-                        query = query
-                                + "ON ATOP.Year BETWEEN SY.StartYear AND EY.EndYear GROUP BY SY.StartYear, EY.EndYear ";
-                        query = query + "UNION ";
-                    }
-                }
-            }
-            if (OrderBy.equals("Descending")) {
-                query = query + "ORDER BY ChangeInAvgTempPercentage DESC ";
-            } else if (OrderBy.equals("Ascending")) {
-                query = query + "ORDER BY ChangeInAvgTempPercentage ";
-            }
-            query = query + "; ";
-            // Get Result
-            ResultSet results = statement.executeQuery(query);
-
-            // Process all of the results
-            while (results.next()) {
-                // Lookup the columns we need
-                String dataType = results.getString("DataType");
-                int startYear = results.getInt("StartYear");
-                float startTemp = results.getFloat("StartYearAvg");
-                int endYear = results.getInt("EndYear");
-                float endTemp = results.getFloat("EndYearAvg");
-                float averageTempOverPeriod = results.getFloat("AverageTempOverPeriod");
-                float tempPercentage = results.getFloat("ChangeInAvgTempPercentage");
-                // Create a Climate Object
-                Climate climate = new Climate();
-                climate.setDataType(dataType);
-                climate.setStartYear(startYear);
-                climate.setStartTemp(startTemp);
-                climate.setEndYear(endYear);
-                climate.setEndTemp(endTemp);
-                climate.setAverageTemperature(averageTempOverPeriod);
-                climate.setTempPercent(tempPercentage);
-                // Add the lga object to the array
-                climates.add(climate);
-            }
-
-            // Close the statement because we are done with it
-            statement.close();
-        } catch (SQLException e) {
-            // If there is an error, lets just pring the error
-            System.err.println(e.getMessage());
-        } finally {
-            // Safety code to cleanup
-            try {
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                // connection close failed.
-                System.err.println(e.getMessage());
-            }
-        }
-
-        // Finally we return all of the lga
-        return climates;
-    }
-
-    public ArrayList<Climate> OLDgetWorldLandOceanAverageTempOverPeriod(String startYear, String endYear,
-                                                                        String dataType) {
-        // Create the ArrayList of Climate objects to return
-        ArrayList<Climate> climates = new ArrayList<Climate>();
-
-        // Setup the variable for the JDBC connection
-        Connection connection = null;
-
-        try {
-            // Connect to JDBC data base
-            connection = DriverManager.getConnection(DATABASE);
-
-            // Prepare a new SQL Query & Set a timeout
-            Statement statement = connection.createStatement();
-            statement.setQueryTimeout(30);
-
-            if (dataType.equals("Land Data")) {
-                // The Query
-                String query = "SELECT SY.StartYear, ";
-                query = query + "ROUND(SY.StartYearAvg, 2) AS StartYearAvg, ";
-                query = query
-                        + "EY.EndYear, ROUND(EY.EndYearAvg, 2) AS EndYearAvg, ROUND(AVG(ATOP.AvgAirTemp), 2) AS AverageTempOverPeriod, ROUND(((EY.EndYearAvg - SY.StartYearAvg) / SY.StartYearAvg) * 100, 2) AS ChangeInAvgTempPercentage ";
-                query = query
-                        + "FROM (SELECT Year AS StartYear, AvgAirTemp AS StartYearAvg FROM GlobalTemp WHERE Year = '"
-                        + startYear + "') AS SY ";
-                query = query
-                        + "JOIN (SELECT Year AS EndYear, AvgAirTemp AS EndYearAvg FROM GlobalTemp WHERE Year = '"
-                        + endYear + "') AS EY JOIN GlobalTemp AS ATOP ";
-                query = query + "ON ATOP.Year BETWEEN SY.StartYear AND EY.EndYear GROUP BY SY.StartYear, EY.EndYear; ";
-
-                // Get Result
-                ResultSet results = statement.executeQuery(query);
-
-                // Process all of the results
-                while (results.next()) {
-                    // Lookup the columns we need
-
-                    float startTemp = results.getFloat("StartYearAvg");
-                    float endTemp = results.getFloat("EndYearAvg");
-                    float averageTempOverPeriod = results.getFloat("AverageTempOverPeriod");
-                    float tempPercentage = results.getFloat("ChangeInAvgTempPercentage");
-                    // Create a Climate Object
-                    Climate climate = new Climate();
-                    climate.setDataType(dataType);
-                    climate.setStartTemp(startTemp);
-                    climate.setEndTemp(endTemp);
-                    climate.setAverageTemperature(averageTempOverPeriod);
-                    climate.setTempPercent(tempPercentage);
-                    // Add the lga object to the array
-                    climates.add(climate);
-                }
-            } else if (dataType.equals("Land-Ocean Data")) {
-                // The Query
-                String query = "SELECT SY.StartYear, ";
-                query = query + "ROUND(SY.StartYearAvg, 2) AS StartYearAvg, ";
-                query = query
-                        + "EY.EndYear, ROUND(EY.EndYearAvg, 2) AS EndYearAvg, ROUND(AVG(ATOP.AvgOceanTemp), 2) AS AverageTempOverPeriod, ROUND(((EY.EndYearAvg - SY.StartYearAvg) / SY.StartYearAvg) * 100, 2) AS ChangeInAvgTempPercentage ";
-                query = query
-                        + "FROM (SELECT Year AS StartYear, AvgOceanTemp AS StartYearAvg FROM GlobalLandOceanTemp WHERE Year = '"
-                        + startYear + "') AS SY ";
-                query = query
-                        + "JOIN (SELECT Year AS EndYear, AvgOceanTemp AS EndYearAvg FROM GlobalLandOceanTemp WHERE Year = '"
-                        + endYear + "') AS EY JOIN GlobalLandOceanTemp AS ATOP ";
-                query = query + "ON ATOP.Year BETWEEN SY.StartYear AND EY.EndYear GROUP BY SY.StartYear, EY.EndYear; ";
-
-                // Get Result
-                ResultSet results = statement.executeQuery(query);
-
-                // Process all of the results
-                while (results.next()) {
-                    // Lookup the columns we need
-
-                    float startTemp = results.getFloat("StartYearAvg");
-                    float endTemp = results.getFloat("EndYearAvg");
-                    float averageTempOverPeriod = results.getFloat("AverageTempOverPeriod");
-                    float tempPercentage = results.getFloat("ChangeInAvgTempPercentage");
-
-                    // Create a Climate Object
-                    Climate climate = new Climate();
-                    climate.setDataType(dataType);
-                    climate.setStartTemp(startTemp);
-                    climate.setEndTemp(endTemp);
-                    climate.setAverageTemperature(averageTempOverPeriod);
-                    climate.setTempPercent(tempPercentage);
-
-                    // Add the lga object to the array
-                    climates.add(climate);
-                }
-            }
-
-            // Close the statement because we are done with it
-            statement.close();
-        } catch (SQLException e) {
-            // If there is an error, lets just pring the error
-            System.err.println(e.getMessage());
-        } finally {
-            // Safety code to cleanup
-            try {
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                // connection close failed.
-                System.err.println(e.getMessage());
-            }
-        }
-
-        // Finally we return all of the lga
-        return climates;
-    }
 
     public ArrayList<Climate> getPopulationYears() {
         // Create the ArrayList of Climate objects to return
@@ -2273,6 +1692,7 @@ public class JDBCConnection {
     }
 
     public ArrayList<Climate> getCountryCorrelation(String CountryName, String startYear, String endYear) {
+
         // Create the ArrayList of Climate objects to return
         ArrayList<Climate> climates = new ArrayList<Climate>();
 
@@ -2334,5 +1754,94 @@ public class JDBCConnection {
         // Finally we return all of the lga
         return climates;
     }
+    
+    public static String getMinYear(String table, String rangeType){
+
+        Connection connection = null;
+        String minYear = "does not exist";
+
+        try {
+            // Connect to JDBC data base
+            connection = DriverManager.getConnection(DATABASE);
+
+            // Prepare a new SQL Query & Set a timeout
+            Statement statement = connection.createStatement();
+            statement.setQueryTimeout(30);
+
+            // The Query
+            String query = "SELECT MIN(Year) FROM "+ table + " WHERE  "+ rangeType +" IS NOT NULL;";
+
+            // Get Result
+            ResultSet results = statement.executeQuery(query);
+            
+            // Process all of the results
+            while (results.next()){
+                minYear = results.getString("Min(Year)");
+           }
+
+            statement.close();
+        } catch (SQLException e) {
+            // If there is an error, lets just pring the error
+            System.err.println(e.getMessage());
+        } finally {
+            // Safety code to cleanup
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                // connection close failed.
+                System.err.println(e.getMessage());
+            }
+        }
+
+        // Finally we return all of the lga
+        return minYear;
+    }
+
+    public static String getMaxYear(String table, String rangeType){
+
+        Connection connection = null;
+        String maxYear = "does not exist";
+
+        try {
+            // Connect to JDBC data base
+            connection = DriverManager.getConnection(DATABASE);
+
+            // Prepare a new SQL Query & Set a timeout
+            Statement statement = connection.createStatement();
+            statement.setQueryTimeout(30);
+
+            // The Query
+            String query = "SELECT MAX(Year) FROM "+ table + " WHERE  "+ rangeType +" IS NOT NULL;";
+
+            // Get Result
+            ResultSet results = statement.executeQuery(query);
+            
+            // Process all of the results
+            while (results.next()){
+                maxYear = results.getString("Max(Year)");
+           }
+
+            statement.close();
+        } catch (SQLException e) {
+            // If there is an error, lets just pring the error
+            System.err.println(e.getMessage());
+        } finally {
+            // Safety code to cleanup
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                // connection close failed.
+                System.err.println(e.getMessage());
+            }
+        }
+
+        // Finally we return all of the lga
+        return maxYear;
+    }
+
 
 }

@@ -69,6 +69,7 @@ public class PageST2A implements Handler {
                             <i class='fa fa-caret-down'></i>
                             </button>
                             <div class='dropdown-content'>
+                            <a href='page1B.html'>Introduction About Data</a>
                             <a href='page2A.html'>Temperature & Population Change By Country/World</a>
                             <a href='page2B.html'>Temperature Change By State/City</a>
                             <a href='page3A.html'>Change In Temperature Over Extended Periods</a>

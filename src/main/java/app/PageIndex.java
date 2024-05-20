@@ -55,7 +55,7 @@ public class PageIndex implements Handler {
             <h2>Welcome to<br> 
             Climate Change Awareness </h2> 
             <p>where we're committed to raising awareness about climate temperature change and its impact on our planet.</p>
-            <a href='landing.html'>Explore</a>
+            <a href='page1B.html'>Explore</a>
             </div>
         </section>
 
