@@ -118,11 +118,11 @@ tr:active {
 
 /* Style the topnav links */
 .topnav a {
+  font-size: 18px;
   float: left;
   display: block;
   color: #000000;
   text-align: center;
-
   padding: 14px 16px;
   text-decoration: none;
 }
@@ -511,7 +511,7 @@ h3 {
   margin-inline-end: 0px;
   font-weight: bold;
   unicode-bidi: isolate;
-  text-align: center;
+  margin-left: 30px;
 }
 
 h2 {

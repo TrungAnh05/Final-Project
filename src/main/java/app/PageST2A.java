@@ -288,7 +288,7 @@ public class PageST2A implements Handler {
 
         // validation for form
         if (DataToOutput == null) {
-            html = html + "<h3>Please Select Country or Global Data</h3>";
+            html = html + "";
         } else if (DataToOutput.equals("Global")) {
             if (StartYear_drop != null) {
                 html = html + outputWorld(DataToOutput, StartYear_drop, EndYear_drop);

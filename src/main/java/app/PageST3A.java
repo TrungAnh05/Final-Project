@@ -492,7 +492,7 @@ public class PageST3A implements Handler {
 
     // validation for form
     if (geoLocation == null) {
-      html = html + "<h3>Please Fill Out The Form Above</h3>";
+      html = html + "<h3 style = 'text-align: center;'>Please Fill Out The Form Above</h3>";
     } else if (geoLocation.equals("Global")) {
       if (timePeriod != null && startYear1 != null) {
         html = html + outputGlobalData(geoLocation, startYear1, timePeriod, startYear2, startYear3, startYear4,
