@@ -90,6 +90,7 @@
 }
 
 .persona-description {
+  width: 70%;
   color: #000;
   font: 500 23px/35px Inter, sans-serif;
 }
@@ -143,7 +144,7 @@
   z-index: 10;
   max-height: 100%;
   max-width: 100%;
-  justify-content: center;
+  justify-content: center;  
   padding: 10px;
 }
 
@@ -279,9 +280,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 203px 60px 80px;
-  font: 700 64px/96px Inter, sans-serif;
+  font: 700 64px/90px Inter, sans-serif;
   text-align: center;
+  padding-bottom: 25px;
 }
 
 @media (max-width: 991px) {
@@ -294,12 +295,14 @@
 }
 
 .member-info-left {
+  font-size: 25px;
   font-family: Arsenal, sans-serif;
   background-color: #e0e0e0;
   display: flex;
   justify-content: center;
   padding: 113px 70px 80px 78px;
   margin-top: 53px;
+  margin-bottom: 53px;
 }
 
 @media (max-width: 991px) {
@@ -310,12 +313,14 @@
 }
 
 .member-info-right {
+  font-size: 25px;
   font-family: Arsenal, sans-serif;
   background-color: #e0e0e0;
   display: flex;
   justify-content: center;
   padding: 114px 70px 80px 78px;
   margin-top: 53px;
+  margin-bottom: 53px;
 }
 
 @media (max-width: 991px) {

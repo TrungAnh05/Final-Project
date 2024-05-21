@@ -115,6 +115,7 @@ public class PageST2B implements Handler {
                                     <a href='javascript:void(0)' class='closebtn' onclick='closeNav()'>&times;</a>
                                     <a href='/'>Home</a>
                                     <p>Climate Data and Analysis</p>
+                                    <a href='page1B.html'>Introduction About Data</a>
                                     <a href='page2A.html'>Temperature & Population Change By Country/World</a>
                                     <a href='page2B.html'>Temperature Change By State/City</a>
                                     <a href='page3A.html'>Change In Temperature Over Extended Periods</a>
@@ -317,7 +318,7 @@ public class PageST2B implements Handler {
 
 
             if (type != null) {
-                html += "<table><tr> <th> Year </th> ";
+                html += "<table style='margin-left: auto; margin-right: auto; width: 100%;'><tr> <th> Year </th> ";
 
                 if (type.equals("States")) {
                     data = JDBCConnection.getTempByState(countryParameterFromURL, fromDate, toDate);
@@ -375,6 +376,7 @@ public class PageST2B implements Handler {
                         <div class='footerBlock'>
                                     <div class='footerColumn'>
                                       <p style='margin-top: 0;'>Shallow View</p>
+                                      <a href='page1B.html'>Introduction About Data</a>
                                       <a href='page2A.html'>Temperature & Population Change By Country/World</a>
                                       <a href='page2B.html'>Temperature Change By State/City</a>
                                     </div>

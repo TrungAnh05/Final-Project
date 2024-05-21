@@ -134,12 +134,11 @@ public class PageST3A implements Handler {
                         <a href='javascript:void(0)' class='closebtn' onclick='closeNav()'>&times;</a>
                         <a href='/'>Home</a>
                         <p>Climate Data and Analysis</p>
+                        <a href='page1B.html'>Introduction About Data</a>
                         <a href='page2A.html'>Temperature & Population Change By Country/World</a>
                         <a href='page2B.html'>Temperature Change By State/City</a>
-                        <a href='page2C.html'>Global Land-Ocean Temperature Change</a>
                         <a href='page3A.html'>Change In Temperature Over Extended Periods</a>
                         <a href='page3B.html'>Time Periods With Similar Temperature/Population</a>
-                        <a href='page3C.html'>Comparison Of Global Temperature Data Over Extended Periods</a>
                         <p>About Us</p>
                         <a href='mission.html'>Our Mission</a>
                 <a href='mission.html#persona-section'>Personas</a>
@@ -159,9 +158,7 @@ public class PageST3A implements Handler {
         """;
 
     html = html
-        + "<p>This page allows you to select multiple allows you to view average temperatures over different time periods and compare the changes to other geographic locations over the same period."
-        +
-        " As a result you can actively see the ways climate change has affected temperature change over the coarse of history.</p>";
+        + "<p>This page enables selecting and comparing average temperatures across time periods and geographic locations. See firsthand how climate change has influenced temperature shifts throughout history.</p>";
     html = html + "<form id='myForm' action='/page3A.html' method='post'>";
     html = html + "<p><strong>Note:</strong> If data is unavailable it will be presented in the table as '0.0'</p>";
     // geo location drop down
@@ -537,15 +534,14 @@ public class PageST3A implements Handler {
                     <div class='footerBlock'>
                                 <div class='footerColumn'>
                                   <p style='margin-top: 0;'>Shallow View</p>
+                                  <a href='page1B.html'>Introduction About Data</a>
                                   <a href='page2A.html'>Temperature & Population Change By Country/World</a>
                                   <a href='page2B.html'>Temperature Change By State/City</a>
-                                  <a href='page2C.html'>Global Land-Ocean Temperature Change</a>
                                 </div>
                                 <div class='footerColumn'>
                                   <p style='margin-top: 0;'>In-Depth View</p>
                                   <a href='page3A.html'>Change In Temperature Over Extended Periods</a>
                                   <a href='page3B.html'>Time Periods With Similar Temperature/Population</a>
-                                  <a href='page3C.html'>Comparison Of Global Temperature Data Over Extended Periods</a>
                                 </div>
                                 <div class='footerColumn'>
                                   <p style='margin-top: 0;'>About</p>

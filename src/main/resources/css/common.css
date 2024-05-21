@@ -570,5 +570,6 @@ table {
   white-space: normal;
   font-variant: normal;
   text-align: center;
-  margin-left: 170px;
+  margin: 0 auto;
+  width: 100%;
 }

@@ -58,12 +58,11 @@ public class PageST3B implements Handler {
                     <i class='fa fa-caret-down'></i>
                     </button>
                     <div class='dropdown-content'>
+                    <a href='page1B.html'>Introduction About Data</a>
                     <a href='page2A.html'>Temperature & Population Change By Country/World</a>
                     <a href='page2B.html'>Temperature Change By State/City</a>
-                    <a href='page2C.html'>Global Land-Ocean Temperature Change</a>
                     <a href='page3A.html'>Change In Temperature Over Extended Periods</a>
                     <a href='page3B.html'>Time Periods With Similar Temperature/Population</a>
-                    <a href='page3C.html'>Comparison Of Global Temperature Data Over Extended Periods</a>
                     </div>
                     </div>
                     <div class='dropDown'>
@@ -100,12 +99,11 @@ public class PageST3B implements Handler {
                         <a href='javascript:void(0)' class='closebtn' onclick='closeNav()'>&times;</a>
                         <a href='/'>Home</a>
                         <p>Climate Data and Analysis</p>
+                        <a href='page1B.html'>Introduction About Data</a>
                         <a href='page2A.html'>Temperature & Population Change By Country/World</a>
                         <a href='page2B.html'>Temperature Change By State/City</a>
-                        <a href='page2C.html'>Global Land-Ocean Temperature Change</a>
                         <a href='page3A.html'>Change In Temperature Over Extended Periods</a>
                         <a href='page3B.html'>Time Periods With Similar Temperature/Population</a>
-                        <a href='page3C.html'>Comparison Of Global Temperature Data Over Extended Periods</a>
                         <p>About Us</p>
                         <a href='mission.html'>Our Mission</a>
                 <a href='mission.html#persona-section'>Personas</a>
@@ -162,17 +160,8 @@ public class PageST3B implements Handler {
 
     // page description
     html.append(
-        "<p> On this page you have the option to select whether you wish to view data on a country, city, or state level. </p>");
-    html.append(
-        "<p> If you have chosen to view country data you may view population, temperature or both population and temperature. </p>");
-    html.append("<p> If you have chosen to view city or state data only temperature data is available. </p>");
-    html.append("<p> Additionally you may choose to compare data by relative change or absolute value </p>");
-    html.append(
-        "<p> The table generator will provide you with information geographical locations with similar data to your chosen location. You may choose how many locations you wish to compare.  </p>");
-    html.append("<p> Additionally you may choose to compare data by relative change or absolute value </p>");
-    html.append(
-        "<p> <strong>Please Note:</strong> Cities and States will be compared with respect to their parent country. </p>");
-
+        "<p> On this page, choose country, city, or state data. For countries, view population, temperature, or both. For cities or states, only temperature available. Compare by relative change or absolute value. Select similar locations to compare, choosing how many </p>");
+    
     // declaring variables
     int fromDate;
     int duration;
@@ -465,6 +454,7 @@ public class PageST3B implements Handler {
               });
               </script>
           """);
+
       if (fromDate != 0 && duration != 0) {
 
         int toDate = fromDate + duration;
@@ -486,6 +476,7 @@ public class PageST3B implements Handler {
               if (similarityParameterFromUrl != null) {
                 if (similarityParameterFromUrl.equals("relative")) {
                   int i = 1;
+
                   html.append("<table> <tr>");
                   html.append("<th>Rank By Similarity</th>");
                   html.append("<th>Country</th>");
@@ -842,6 +833,7 @@ public class PageST3B implements Handler {
         }
       }
     }
+    
 
     // Close Content div
     html.append("</div>");
@@ -853,15 +845,14 @@ public class PageST3B implements Handler {
         <div class='footerBlock'>
                     <div class='footerColumn'>
                       <p style='margin-top: 0;'>Shallow View</p>
+                      <a href='page1B.html'>Introduction About Data</a>
                       <a href='page2A.html'>Temperature & Population Change By Country/World</a>
                       <a href='page2B.html'>Temperature Change By State/City</a>
-                      <a href='page2C.html'>Global Land-Ocean Temperature Change</a>
                     </div>
                     <div class='footerColumn'>
                       <p style='margin-top: 0;'>In-Depth View</p>
                       <a href='page3A.html'>Change In Temperature Over Extended Periods</a>
                       <a href='page3B.html'>Time Periods With Similar Temperature/Population</a>
-                      <a href='page3C.html'>Comparison Of Global Temperature Data Over Extended Periods</a>
                     </div>
                     <div class='footerColumn'>
                       <p style='margin-top: 0;'>About</p>
