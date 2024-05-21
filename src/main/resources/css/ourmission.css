@@ -90,7 +90,7 @@
 }
 
 .persona-description {
-  width: 70%;
+  width: 100%;
   color: #000;
   font: 500 23px/35px Inter, sans-serif;
 }
@@ -269,7 +269,7 @@
 .vertical-divider {
   background-color: #e0e0e0;
   width: 204px;
-  height: 555px;
+  height: 743px;
   margin-top: 53px;
 }
 
@@ -282,7 +282,7 @@
   justify-content: center;
   font: 700 64px/90px Inter, sans-serif;
   text-align: center;
-  padding-bottom: 25px;
+  margin-bottom: 53px;
 }
 
 @media (max-width: 991px) {
@@ -334,6 +334,6 @@
   background-color: #e0e0e0;
   width: 290px;
   max-width: 100%;
-  height: 555px;
+  height: 743px;
   margin-top: 53px;
 }

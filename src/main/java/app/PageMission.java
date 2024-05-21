@@ -50,13 +50,13 @@ public class PageMission implements Handler {
     html += CommonElements.Header();
     // Add the topnav
     html += CommonElements.Topnav();
-
+ 
     //Add go to homepage and open nav function
     html += CommonElements.goToHomePageandOpenNav();
-
+ 
     //Add SideNavBar
     html += CommonElements.SideNavBar();
-
+ 
     // Add Div for page Content
     html = html + "<div class='content1'>";
  
@@ -85,22 +85,23 @@ public class PageMission implements Handler {
     html = html + "<img src='https://cdn.builder.io/api/v1/image/assets/TEMP/d4e9ec81c06cd6850d8e63ccfcc03b5d2b780920adeb66353de32327ece1d1bc?apiKey=51f4311d3f4749feb9f6669c989090bb&'' alt='' class='background-image' />";
     html = html + "<div class='content-wrapper'>";
     html = html + "<h2 class='section-title'>Persona</h2>";
-    
-    html = html + "<div class='persona-card'>";
-    html = html + "<div class='persona-content'>";
-        html = html + "<div class='persona-details'>";
-            html = html + "<div class='persona-description'>";
-                
-            ArrayList<PersonaData> data = JDBCConnection.getPersonaData();
-
-            for(int i=0; i<1; i++){
-              ArrayList<PersonaData> persona = JDBCConnection.getPersonaData();;
+    ArrayList<PersonaData> data = JDBCConnection.getPersonaData();
+    for(int i=0; i<1; i++){
+    ArrayList<PersonaData> persona = JDBCConnection.getPersonaData();;
               String Name = persona.get(i).getName();
               String Quote = persona.get(i).getQuote();
               String Background = persona.get(i).getBackground();
               String Experience = persona.get(i).getExperience();
               String Requirements = persona.get(i).getRequirements();
-          
+ 
+   
+    html = html + "<div class='persona-card'>";
+    html += String.format("<img style='width: 350px; height: 350px; float: right; margin-top: 500px ;'  src='%s'/>",
+              persona.get(i).getImagePath());
+    html = html + "<div class='persona-content'>";
+        html = html + "<div class='persona-details'>";
+            html = html + "<div class='persona-description'>";
+         
               html += "<h2>" + Name + "</h2>";
               html += "<p>" + Quote + "</p>";
               html += " <h4> Background </h4>";
@@ -109,27 +110,29 @@ public class PageMission implements Handler {
               html += "<p>" + Experience + "</p>";
               html += " <h4> Requirements </h4>";
               html += "<p>" + Requirements + "</p>";
-              html += String.format("<img style='width: 200px; height: 200px; float: right;' src='%s'/>",
-              persona.get(i).getImagePath());
+             
               html = html + "</div>";
               }
                 html = html + "</div>";
             html = html + "</div>";
         html = html + "</div>";
-
-    html = html + "<div class='persona-card'>";
-    html = html + "<div class='persona-content'>";
-        html = html + "<div class='persona-details'>";
-            html = html + "<div class='persona-description'>";
-
-            for(int i=1; i<2; i++){
-              ArrayList<PersonaData> persona = JDBCConnection.getPersonaData();;
-              String Name = persona.get(i).getName();
-              String Quote = persona.get(i).getQuote();
-              String Background = persona.get(i).getBackground();
-              String Experience = persona.get(i).getExperience();
-              String Requirements = persona.get(i).getRequirements();
-          
+ 
+       
+        for(int i=1; i<2; i++){
+        ArrayList<PersonaData> persona = JDBCConnection.getPersonaData();;
+                  String Name = persona.get(i).getName();
+                  String Quote = persona.get(i).getQuote();
+                  String Background = persona.get(i).getBackground();
+                  String Experience = persona.get(i).getExperience();
+                  String Requirements = persona.get(i).getRequirements();
+   
+       
+        html = html + "<div class='persona-card'>";
+        html += String.format("<img style='width: 350px; height: 350px; float: right; margin-top: 320px ;'  src='%s'/>",
+                  persona.get(i).getImagePath());
+        html = html + "<div class='persona-content'>";
+            html = html + "<div class='persona-details'>";
+                html = html + "<div class='persona-description'>";
               html += "<h2>" + Name + "</h2>";
               html += "<p>" + Quote + "</p>";
               html += " <h4> Background </h4>";
@@ -138,27 +141,29 @@ public class PageMission implements Handler {
               html += "<p>" + Experience + "</p>";
               html += " <h4> Requirements </h4>";
               html += "<p>" + Requirements + "</p>";
-              html += String.format("<img style='width: 200px; height: 200px; float: right;' src='%s'/>",
-              persona.get(i).getImagePath());
+             
               html = html + "</div>";
               }
                 html = html + "</div>";
             html = html + "</div>";
         html = html + "</div>";
-
-    html = html + "<div class='persona-card'>";
-    html = html + "<div class='persona-content'>";
-        html = html + "<div class='persona-details'>";
-            html = html + "<div class='persona-description'>";
-                
-            for(int i=2; i<3; i++){
-              ArrayList<PersonaData> persona = JDBCConnection.getPersonaData();;
-              String Name = persona.get(i).getName();
-              String Quote = persona.get(i).getQuote();
-              String Background = persona.get(i).getBackground();
-              String Experience = persona.get(i).getExperience();
-              String Requirements = persona.get(i).getRequirements();
-          
+ 
+        for(int i=2; i<3; i++){
+          ArrayList<PersonaData> persona = JDBCConnection.getPersonaData();;
+                    String Name = persona.get(i).getName();
+                    String Quote = persona.get(i).getQuote();
+                    String Background = persona.get(i).getBackground();
+                    String Experience = persona.get(i).getExperience();
+                    String Requirements = persona.get(i).getRequirements();
+     
+         
+          html = html + "<div class='persona-card'>";
+          html += String.format("<img style='width: 350px; height: 350px; float: right; margin-top: 330px ;'  src='%s'/>",
+                    persona.get(i).getImagePath());
+          html = html + "<div class='persona-content'>";
+              html = html + "<div class='persona-details'>";
+                  html = html + "<div class='persona-description'>";
+         
               html += "<h2>" + Name + "</h2>";
               html += "<p>" + Quote + "</p>";
               html += " <h4> Background </h4>";
@@ -167,18 +172,17 @@ public class PageMission implements Handler {
               html += "<p>" + Experience + "</p>";
               html += " <h4> Requirements </h4>";
               html += "<p>" + Requirements + "</p>";
-              html += String.format("<img style='width: 200px; height: 200px; float: right;' src='%s'/>",
-              persona.get(i).getImagePath());
+           
               html = html + "</div>";
               }
                 html = html + "</div>";
             html = html + "</div>";
         html = html + "</div>";
-
+ 
     html = html + "</div>";
     html = html + "</section>";
     html = html + "</section>";
-
+ 
     // Student info section
     html = html + "<section id='aboutUs-section'>";
     html += """
@@ -191,22 +195,22 @@ public class PageMission implements Handler {
           </h2>
             """;
             html = html + "<div class='member-info-left'>";
-
+ 
             for(int i=0; i<=1; i++){
               ArrayList<StudentInfo> info = JDBCConnection.getStudentInfo();
               String FName = info.get(i).getFname();
               String LName = info.get(i).getLname();
               String StudentNumber = info.get(i).getStudentNumber();
               String Email = info.get(i).getEmail();
-          
+         
               html +=  FName + " " + LName + "</br>" + "</br>";
               html += "Student Number " + StudentNumber + "</br>" + "</br>";
               html += "Email" + "</br>";
               html +=  Email + "</br>" + "</br>" + "</br>";
               }
-
+ 
           html = html + "</div>";
-
+ 
           html = html + "<div class='member-info-right'>";
             for(int i=2; i<=3; i++){
             ArrayList<StudentInfo> info = JDBCConnection.getStudentInfo();
@@ -214,7 +218,7 @@ public class PageMission implements Handler {
             String LName = info.get(i).getLname();
             String StudentNumber = info.get(i).getStudentNumber();
             String Email = info.get(i).getEmail();
-
+ 
             html +=  FName + " " + LName + "</br>" + "</br>";
             html += "Student Number " + StudentNumber + "</br>" + "</br>";
             html += "Email" + "</br>";
@@ -224,7 +228,7 @@ public class PageMission implements Handler {
           html = html + "<div class='vertical-divider-right'>";
           html = html + "</div>";
         html = html + "</section>";
-
+ 
     // Close Content div
     html += "</div>";
  
